@@ -1,75 +1,397 @@
-@media (max-width: 600px) {
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reglas básicas del fútbol</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --verde: #1e7f3b;
+      --verde-oscuro: #115026;
+      --gris-claro: #f4f4f4;
+      --texto: #222;
+    }
 
-  .nav-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 0.4rem;
-  }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--texto);
+      background: #ffffff;
+      line-height: 1.6;
+    }
 
-  nav a {
-    display: block;
-    width: 100%;
-  }
+    header {
+      background: linear-gradient(135deg, var(--verde), var(--verde-oscuro));
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
 
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
 
-  .hero-text h1 {
-    font-size: 1.6rem;
-  }
+    header p {
+      max-width: 600px;
+      margin: 0.5rem auto 0;
+      font-size: 1rem;
+    }
 
-  .hero-text p {
-    font-size: 0.9rem;
-  }
+    nav {
+      background: #0f351c;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-  .sections-grid {
-    grid-template-columns: 1fr;
-  }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
 
-  .section-card {
-    padding: 1rem;
-  }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: background 0.2s, transform 0.1s;
+    }
 
-  .news-title {
-    font-size: 0.9rem;
-  }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-1px);
+    }
 
-  .news-summary {
-    font-size: 0.8rem;
-  }
+    main {
+      max-width: 1000px;
+      margin: 1.5rem auto 2.5rem;
+      padding: 0 1rem;
+    }
 
-  table {
-    font-size: 0.75rem;
-  }
+    section {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: var(--gris-claro);
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
 
-  .profiles-grid {
-    grid-template-columns: 1fr;
-  }
+    section h2 {
+      margin-bottom: 0.75rem;
+      color: var(--verde-oscuro);
+      font-size: 1.4rem;
+    }
 
-  .match-item {
-    grid-template-columns: 1fr;
-    gap: 0.3rem;
-  }
+    section h3 {
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+      color: #333;
+    }
 
-  .match-extra {
-    text-align: left;
-  }
+    p {
+      margin-bottom: 0.5rem;
+      font-size: 0.98rem;
+    }
 
-  .multimedia-grid {
-    grid-template-columns: 1fr;
-  }
+    ul {
+      margin-left: 1.2rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.96rem;
+    }
 
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
+    li {
+      margin-bottom: 0.25rem;
+    }
 
-}
+    .tag {
+      display: inline-block;
+      background: #fff;
+      color: var(--verde-oscuro);
+      border-radius: 999px;
+      padding: 0.15rem 0.6rem;
+      font-size: 0.75rem;
+      margin-right: 0.25rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nota {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.85rem;
+      color: #555;
+      border-top: 1px solid #eee;
+    }
+
+    @media (min-width: 768px) {
+      header h1 {
+        font-size: 2.6rem;
+      }
+      header p {
+        font-size: 1.05rem;
+      }
+      section {
+        padding: 1.75rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Reglas básicas del fútbol</h1>
+    <p>
+      Una guía sencilla para entender cómo se juega al fútbol: duración del partido, número de jugadores,
+      faltas, fuera de juego y mucho más.
+    </p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#objetivo">Objetivo del juego</a></li>
+      <li><a href="#duracion">Duración del partido</a></li>
+      <li><a href="#jugadores">Jugadores y posiciones</a></li>
+      <li><a href="#campo-balon">Campo y balón</a></li>
+      <li><a href="#inicio">Inicio del juego</a></li>
+      <li><a href="#gol">Gol válido</a></li>
+      <li><a href="#fuera-de-juego">Fuera de juego</a></li>
+      <li><a href="#faltas">Faltas y tarjetas</a></li>
+      <li><a href="#saques">Saques principales</a></li>
+      <li><a href="#arbitro">Árbitro y autoridad</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="objetivo">
+      <h2>Objetivo del juego</h2>
+      <p>
+        El objetivo del fútbol es marcar más goles que el equipo rival durante el tiempo reglamentario.
+      </p>
+      <p>
+        Un <strong>gol</strong> se consigue cuando el balón cruza completamente la línea de meta entre los
+        dos postes y por debajo del larguero, sin que se haya cometido una infracción en la jugada.
+      </p>
+      <p class="nota">
+        En competiciones de eliminación directa, si hay empate se pueden jugar prórrogas y, si persiste,
+        lanzarse penaltis.
+      </p>
+    </section>
+
+    <section id="duracion">
+      <h2>Duración del partido</h2>
+      <p>
+        Un partido de fútbol profesional se divide en:
+      </p>
+      <ul>
+        <li><strong>Dos tiempos</strong> de 45 minutos cada uno.</li>
+        <li><strong>Descanso</strong> de unos 15 minutos entre ambos tiempos.</li>
+      </ul>
+      <p>
+        El árbitro puede añadir <strong>tiempo de descuento</strong> al final de cada parte para compensar
+        interrupciones (lesiones, cambios, revisiones, etc.).
+      </p>
+      <p class="nota">
+        En categorías inferiores o fútbol base, la duración puede ser menor según la edad.
+      </p>
+    </section>
+
+    <section id="jugadores">
+      <h2>Jugadores y posiciones</h2>
+      <p>
+        Cada equipo se compone de:
+      </p>
+      <ul>
+        <li><strong>11 jugadores en el campo</strong>: 1 portero y 10 jugadores de campo.</li>
+        <li>Un número limitado de <strong>suplentes</strong> (según la competición) que pueden entrar como cambios.</li>
+      </ul>
+
+      <h3>Posiciones básicas</h3>
+      <ul>
+        <li><strong>Portero:</strong> único jugador que puede usar las manos, pero solo dentro de su área.</li>
+        <li><strong>Defensas:</strong> protegen la portería y tratan de evitar ocasiones de gol del rival.</li>
+        <li><strong>Centrocampistas:</strong> conectan defensa y ataque, organizan el juego.</li>
+        <li><strong>Delanteros:</strong> principales encargados de marcar goles.</li>
+      </ul>
+
+      <p class="nota">
+        Un equipo no puede seguir jugando si tiene menos de 7 jugadores en el campo.
+      </p>
+    </section>
+
+    <section id="campo-balon">
+      <h2>Campo de juego y balón</h2>
+      <h3>El campo</h3>
+      <p>
+        El fútbol se juega en un campo rectangular de césped natural o artificial, con líneas que delimitan:
+      </p>
+      <ul>
+        <li><strong>Líneas de banda:</strong> laterales del campo.</li>
+        <li><strong>Líneas de meta:</strong> donde se sitúan las porterías.</li>
+        <li><strong>Círculo central:</strong> para el saque inicial.</li>
+        <li><strong>Áreas:</strong> área grande y pequeña frente a cada portería.</li>
+      </ul>
+
+      <h3>El balón</h3>
+      <p>
+        El balón debe ser esférico, de tamaño y peso reglamentarios, y estar correctamente inflado.
+      </p>
+      <p class="nota">
+        Si el balón se daña o se desinfla durante el juego, el árbitro detiene el partido y lo reanuda con
+        un balón de reemplazo.
+      </p>
+    </section>
+
+    <section id="inicio">
+      <h2>Inicio y reanudación del juego</h2>
+      <h3>Saque inicial</h3>
+      <p>
+        El partido comienza con un <strong>saque desde el centro del campo</strong>. Un equipo pone el balón
+        en juego tras el pitido del árbitro.
+      </p>
+      <ul>
+        <li>Todos los jugadores deben estar en su propio campo.</li>
+        <li>Los rivales deben estar fuera del círculo central hasta que se realice el saque.</li>
+      </ul>
+
+      <h3>Otras reanudaciones</h3>
+      <ul>
+        <li><strong>Saque de banda:</strong> cuando el balón sale por una línea de banda.</li>
+        <li><strong>Saque de esquina:</strong> cuando el balón sale por la línea de meta tras tocarlo un defensor.</li>
+        <li><strong>Saque de meta:</strong> cuando el balón sale por la línea de meta tras tocarlo un atacante.</li>
+        <li><strong>Bote a tierra:</strong> para reanudar el juego tras una interrupción especial (lesión, invasión, etc.).</li>
+      </ul>
+    </section>
+
+    <section id="gol">
+      <h2>Gol válido</h2>
+      <p>
+        Un gol es válido cuando:
+      </p>
+      <ul>
+        <li>El balón cruza completamente la línea de meta entre los postes y bajo el larguero.</li>
+        <li>No se ha cometido falta ni fuera de juego en la jugada inmediatamente anterior.</li>
+      </ul>
+      <p class="nota">
+        Si hay una infracción, el árbitro puede anular el gol y reanudar el juego con el tiro libre o penalti
+        correspondiente.
+      </p>
+    </section>
+
+    <section id="fuera-de-juego">
+      <h2>Regla del fuera de juego</h2>
+      <span class="tag">Regla clave</span>
+      <p>
+        Un jugador está en <strong>posición de fuera de juego</strong> si, en el momento en que un compañero
+        le pasa el balón:
+      </p>
+      <ul>
+        <li>Está más cerca de la portería rival que el balón y el penúltimo defensor.</li>
+        <li>Se encuentra en campo contrario.</li>
+      </ul>
+      <p>
+        Estar en posición de fuera de juego <strong>no siempre es infracción</strong>. Solo se sanciona si el
+        jugador participa activamente en la jugada (interviene en el juego, molesta a un rival o saca ventaja
+        de su posición).
+      </p>
+      <p class="nota">
+        La sanción por fuera de juego es un <strong>tiro libre indirecto</strong> a favor del equipo rival
+        desde el lugar de la infracción.
+      </p>
+    </section>
+
+    <section id="faltas">
+      <h2>Faltas, tiros libres y tarjetas</h2>
+      <h3>Faltas más comunes</h3>
+      <ul>
+        <li><strong>Patear, empujar o zancadillear</strong> a un rival.</li>
+        <li><strong>Sujetar</strong> al contrario o impedirle avanzar con el cuerpo de forma ilegal.</li>
+        <li><strong>Juego peligroso</strong> (pies muy altos, entradas temerarias, etc.).</li>
+        <li><strong>Mano intencionada</strong> (tocar el balón con la mano o el brazo de forma voluntaria, salvo el portero en su área).</li>
+      </ul>
+
+      <h3>Tiros libres</h3>
+      <ul>
+        <li><strong>Tiro libre directo:</strong> se puede chutar directamente a portería (por faltas graves).</li>
+        <li><strong>Tiro libre indirecto:</strong> el balón debe tocar a otro jugador antes de poder marcar (por faltas menos graves o fuera de juego).</li>
+      </ul>
+
+      <h3>Penalti</h3>
+      <p>
+        Se concede un <strong>penalti</strong> cuando una falta sancionable con tiro libre directo se comete
+        dentro del área del equipo que defiende.
+      </p>
+
+      <h3>Tarjetas</h3>
+      <ul>
+        <li><strong>Tarjeta amarilla:</strong> amonestación por conducta antideportiva, reiteración de faltas, protestas, etc.</li>
+        <li><strong>Tarjeta roja:</strong> expulsión por faltas muy graves, violencia, impedir un gol con la mano (no siendo portero), o doble amarilla.</li>
+      </ul>
+      <p class="nota">
+        Un jugador expulsado no puede ser reemplazado: su equipo juega con un jugador menos.
+      </p>
+    </section>
+
+    <section id="saques">
+      <h2>Saques principales del juego</h2>
+      <h3>Saque de banda</h3>
+      <ul>
+        <li>Se realiza con las manos, desde el lugar donde salió el balón por la línea de banda.</li>
+        <li>Ambos pies deben estar sobre o detrás de la línea y el balón se lanza por encima de la cabeza.</li>
+      </ul>
+
+      <h3>Saque de esquina</h3>
+      <ul>
+        <li>Lo ejecuta el equipo atacante desde la esquina más cercana a donde salió el balón.</li>
+        <li>Se puede marcar gol directamente desde un saque de esquina.</li>
+      </ul>
+
+      <h3>Saque de meta</h3>
+      <ul>
+        <li>Lo realiza el equipo defensor cuando el balón sale por la línea de meta tras tocarlo un atacante.</li>
+        <li>Normalmente lo ejecuta el portero desde el área de meta.</li>
+      </ul>
+    </section>
+
+    <section id="arbitro">
+      <h2>Árbitro y autoridad en el campo</h2>
+      <p>
+        El <strong>árbitro</strong> es la máxima autoridad durante el partido. Sus funciones principales son:
+      </p>
+      <ul>
+        <li>Hacer cumplir las reglas del juego.</li>
+        <li>Detener, reanudar o finalizar el partido cuando lo considere necesario.</li>
+        <li>Mostrar tarjetas y sancionar faltas.</li>
+        <li>Apoyarse en los árbitros asistentes y, en algunas competiciones, en el VAR.</li>
+      </ul>
+      <p class="nota">
+        Las decisiones del árbitro sobre hechos de juego son definitivas y no se pueden cambiar una vez
+        reanudado el partido.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Página informativa sobre las reglas básicas del fútbol. Puedes adaptar el contenido para clases, blogs o material educativo.
+  </footer>
+</body>
+</html>
